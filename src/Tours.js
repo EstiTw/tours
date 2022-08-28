@@ -1,25 +1,18 @@
 import React from "react";
 import Tour from "./Tour";
-const Tours = ({ tours, onDelete, onRefresh }) => {
+const Tours = ({ tours, onRemoveTour }) => {
   return (
     <>
       <section>
-        <h2 className="title">
-          {tours.length ? " Our Tours" : " No Tours Left"}
-        </h2>
-        {tours.length ? (
-          <p className="underline" />
-        ) : (
-          <div className="title">
-            <button className="btn title" onClick={() => onRefresh()}>
-              Refresh
-            </button>
-          </div>
-        )}
-
-        {tours.map((tour) => (
-          <Tour key={tour.id} tour={tour} onDelete={onDelete} />
-        ))}
+        <div className="title">
+          <h2>Our Tours</h2>
+          <div className="underline" />
+        </div>
+        <div>
+          {tours.map((tour) => (
+            <Tour key={tour.id} {...tour} onRemoveTour={onRemoveTour} />
+          ))}
+        </div>
       </section>
     </>
   );
